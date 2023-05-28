@@ -121,10 +121,10 @@ const Features = () => {
           <button
             onClick={handleButtonClick}
             type="button"
-            className="sm-rounded-btn sm:ml-5 ml-0 sm:mt-0 mt-3 sm:self-start self-auto py-2"
+            className="sm-rounded-btn sm:ml-5 ml-0 sm:mt-0 mt-3 sm:self-start self-auto py-2 font-bold"
             disabled={status === 'submitting'}
           >
-            Shorten it!
+            Shorten It!
           </button>
         </div>
         <div>

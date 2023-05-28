@@ -17,7 +17,7 @@ const Hero = () => {
         </p>
         <a
           href="#features"
-          className="lg-rounded-btn !my-7 inline-block sm:self-start self-center"
+          className="lg-rounded-btn !my-7 inline-block sm:self-start self-center font-bold"
         >
           Get Started
         </a>
