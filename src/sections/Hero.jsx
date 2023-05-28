@@ -15,7 +15,10 @@ const Hero = () => {
           Build your brand's recognition and get detailed insights on how your
           links are performing.
         </p>
-        <a href='#features' className="lg-rounded-btn !my-7 inline-block sm:self-start self-center" >
+        <a
+          href="#features"
+          className="lg-rounded-btn !my-7 inline-block sm:self-start self-center"
+        >
           Get Started
         </a>
       </article>

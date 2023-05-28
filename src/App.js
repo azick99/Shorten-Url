@@ -1,4 +1,4 @@
-import { Features, Footer, Header, Hero, Technology } from "./sections"
+import { Features, Footer, Header, Hero, Technology } from './sections'
 
 function App() {
   return (
@@ -15,4 +15,3 @@ function App() {
 }
 
 export default App
-
