@@ -1,0 +1,16 @@
+import bgBoostDesktop from './bg-boost-desktop.svg'
+import bgBoostMobile from './bg-boost-mobile.svg'
+import bgShortenDesktop from './bg-shorten-desktop.svg'
+import bgShortenMobile from './bg-shorten-mobile.svg'
+import brandRecognition from './icon-brand-recognition.svg'
+import detailedRecords from './icon-detailed-records.svg'
+import facebook from './icon-facebook.svg'
+import fullyCustomizble from './icon-fully-customizable.svg'
+import instagram from './icon-instagram.svg'
+import pinterest from './icon-pinterest.svg'
+import twitter from './icon-twitter.svg'
+import illustrationWork from './illustration-working.svg'
+import logo from './logo.svg'
+import logoWhite from './logo-white.svg'
+
+export { bgBoostDesktop, bgBoostMobile, bgShortenMobile, bgShortenDesktop, brandRecognition, detailedRecords, facebook, fullyCustomizble, instagram, pinterest, twitter, illustrationWork, logo, logoWhite }

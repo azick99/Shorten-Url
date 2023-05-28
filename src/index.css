@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+@layer base {
+    html {
+        @apply lg:text-lg md:text-base text-sm min-h-screen sm:scroll-smooth
+    }
+
+}
+
+@layer utilities{
+    .section-min-height{
+       min-height: calc(100vh - 68px);
+    }
+  }
+
+@layer components {
+    .lg-rounded-btn {
+        @apply focus:bg-cyan/75 bg-cyan px-6 sm:py-2 py-3 text-white transition rounded-3xl
+    }
+
+    .sm-rounded-btn {
+        @apply focus:bg-cyan/75 bg-cyan px-6 sm:py-1 py-3 text-white transition rounded-md
+    }
+
+    .dark-btn {
+        @apply bg-dark-violet px-6 sm:py-1 py-3 text-white transition rounded-md
+    }
+
+    .image {
+        transform: translate(50px);
+    }
+
+    @media (min-width: 640px) {
+        .image {
+            transform: translate(100px);
+        }
+
+        .shorten {
+            background-image: url('./assets/bg-shorten-mobile.svg');
+        }
+        .boost {
+            background-image: url('./assets/bg-boost-mobile.svg');
+        }
+        .translate-2 {
+            transform: translateY(0);
+        }
+
+        .translate-3 {
+            transform: translateY(0);
+        }
+    }
+
+    .translate-2 {
+        transform: translateY(1.75rem);
+    }
+
+    .translate-3 {
+        transform: translateY(3.5rem);
+    }
+
+    .shorten {
+        background-image: url('./assets/bg-shorten-desktop.svg');
+        @apply rounded-md
+    }
+
+    .boost {
+        background-image: url('./assets/bg-boost-desktop.svg');
+    }
+
+    svg > path:hover{
+      @apply fill-cyan transition cursor-pointer 
+    }
+
+    .shorten,
+    .boost {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        @apply bg-dark-violet 
+    }
+    /*Animation*/
+    .scale-up-tr {
+        -webkit-animation: scale-up-tr 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+                animation: scale-up-tr 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+
+
+@-webkit-keyframes scale-up-tr {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+    }
+  }
+  @keyframes scale-up-tr {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: 100% 0%;
+              transform-origin: 100% 0%;
+    }
+  }
+  
+}
