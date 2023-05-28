@@ -6,15 +6,19 @@ import { logoWhite } from '../assets'
 
 const Footer = () => {
   return (
-      <footer id="resources" className=" bg-very-dark-violet  text-white p-12">
+    <footer id="resources">
       <div className=" flex flex-col items-center boost py-16 scroll-mt-40">
         <p className="font-bold sm:text-3xl text-2xl text-white">
           Boost your links today
         </p>
-        <a href="#features" className="lg-rounded-btn !mt-6 inline-block font-bold">
+        <a
+          href="#features"
+          className="lg-rounded-btn !mt-6 inline-block font-bold"
+        >
           Get Started
         </a>
       </div>
+      <div className=' bg-very-dark-violet  text-white p-12 "'>
         <section className="w-[85vw] mx-auto">
           <nav
             className="w-full sm:grid flex gap-5 sm:grid-cols-5 flex-col  sm:items-start items-center  "
@@ -88,7 +92,8 @@ const Footer = () => {
             </div>
           </nav>
         </section>
-      </footer>
+      </div>
+    </footer>
   )
 }
 
