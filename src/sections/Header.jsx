@@ -9,6 +9,7 @@ const Header = () => {
       id="mobile-menu"
       className={`${isMobileMenuOpen ? 'flex' : 'hidden'}  
        absolute top-[68px] bg-dark-violet text-white w-[90%] flex-col justify-center right-5 rounded-xl scale-up-tr`}
+      onClick={() => setIsMobileMenuOpen(false)}
     >
       <nav
         className="flex flex-col font-bold text-lg items-center p-9"
