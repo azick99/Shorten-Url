@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { Features, Footer, Header, Hero, Technology } from './sections'
 
 function App() {

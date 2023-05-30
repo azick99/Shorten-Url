@@ -1,8 +1,9 @@
+import * as React from 'react'
 import { useState } from 'react'
 import { logo } from '../assets'
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 
   const mobileMenu = (
     <section

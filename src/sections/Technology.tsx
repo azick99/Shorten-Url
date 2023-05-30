@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react';
 import { techs } from '../data/technologyData'
 
 const Technology = () => {

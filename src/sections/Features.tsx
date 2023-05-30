@@ -1,49 +1,59 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid'
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
-const Features = () => {
-  const [urlInput, setUrlInput] = useState('')
-  const [shortLink, setShortLink] = useState('')
-  const [urls, setUrls] = useState([])
-  const [status, setStatus] = useState('typing')
-  const [error, setError] = useState(null)
+interface UrlData {
+  id: string;
+  original_link: string;
+  full_short_link2: string;
+  copied?: boolean;
+}
 
-  const urlId = uuidv4()
-  const inputEmpty = urlInput.length === 0
+const Features: React.FC = () => {
+  const [urlInput, setUrlInput] = useState<string>('');
+  const [shortLink, setShortLink] = useState<string>('');
+  const [urls, setUrls] = useState<UrlData[]>([]);
+  const [status, setStatus] = useState<'typing' | 'submitting' | 'success' | 'empty'>('typing');
+  const [error, setError] = useState<Error | null>(null);
 
-  const url = `https://api.shrtco.de/v2/shorten?url=${urlInput}`
+  const urlId = uuidv4();
+  const inputEmpty = urlInput.length === 0;
+
+  const url = `https://api.shrtco.de/v2/shorten?url=${urlInput}`;
 
   const fetchData = async () => {
-    setStatus('submitting')
+    setStatus('submitting');
     try {
-      const response = await axios.get(url)
-      setShortLink(response.data.result)
-      setStatus('success')
+      const response = await axios.get(url);
+      setShortLink(response.data.result);
+      setStatus('success');
     } catch (error) {
-      setStatus('typing')
-      setError(error)
+      setStatus('typing');
+      setError(error);
     }
-  }
+  };
 
   useEffect(() => {
     if (status === 'success') {
-      setUrls((prevUrls) => [...prevUrls, { ...shortLink, id: urlId }])
+      setUrls((prevUrls) => [
+        ...prevUrls,
+        { id: urlId, original_link: urlInput, full_short_link2: shortLink }
+      ]);
     }
-  }, [status, shortLink])
-
+  }, [status, shortLink]);
   useEffect(() => {
-    const savedUrls = localStorage.getItem('savedUrls')
+    const savedUrls = localStorage.getItem('savedUrls');
     if (savedUrls) {
-      setUrls(JSON.parse(savedUrls))
+      setUrls(JSON.parse(savedUrls));
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem('savedUrls', JSON.stringify(urls))
-  }, [urls])
+    localStorage.setItem('savedUrls', JSON.stringify(urls));
+  }, [urls]);
 
-  const handleCopyClick = (fullShortLink, id) => {
+  const handleCopyClick = (fullShortLink: string, id: string) => {
     navigator.clipboard
       .writeText(fullShortLink)
       .then(() => {
@@ -52,48 +62,48 @@ const Features = () => {
           prevUrls.map((url) =>
             url.id === id ? { ...url, copied: true } : url
           )
-        )
+        );
       })
       .catch((error) => {
-        console.error('Error copying URL to clipboard:', error)
-      })
-  }
+        console.error('Error copying URL to clipboard:', error);
+      });
+  };
 
-  const handleUrlChange = (event) => {
-    setUrlInput(event.target.value)
-    setStatus('typing')
-    setError(null)
-  }
+  const handleUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUrlInput(event.target.value);
+    setStatus('typing');
+    setError(null);
+  };
 
-  const handleRemoveClick = (id) => {
-    setUrls(urls.filter((url) => url.id !== id))
-  }
+  const handleRemoveClick = (id: string) => {
+    setUrls(urls.filter((url) => url.id !== id));
+  };
 
   const handleButtonClick = async () => {
     if (inputEmpty) {
-      setStatus('empty')
+      setStatus('empty');
     }
     if (!inputEmpty) {
-      fetchData()
+      fetchData();
     }
-    setUrlInput('')
-  }
+    setUrlInput('');
+  };
 
-  let errorContent
+  let errorContent: React.ReactNode;
 
   if (status === 'empty') {
     errorContent = (
       <p className="mt-2 sm:absolute static text-pink-600 text-sm">
         <i>Please add a link</i>
       </p>
-    )
+    );
   }
   if (error !== null) {
     errorContent = (
       <p className="mt-2 sm:absolute static text-pink-600 text-sm">
         <i>Link is wrong! try again</i>
       </p>
-    )
+    );
   }
 
   return (
@@ -129,14 +139,13 @@ const Features = () => {
         </div>
         <div>
           {urls.map((url) => {
-            const { id, original_link, full_short_link2, copied } = url
+            const { id, original_link, full_short_link2, copied } = url;
             return (
               <div
                 key={id}
                 className="mt-5 flex sm:flex-row flex-col w-full bg-white sm:py-3 sm:px-5 py-0 px-0 items-center rounded-md gap-x-4 "
               >
                 <p className="basis-4/6 overflow-x-auto sm:border-0 border-b sm:mb-0 sm:p-0 p-4 w-full">
-                  {' '}
                   {original_link}
                 </p>
                 <div className="basis-2/6 flex sm:flex-row flex-col sm:gap-y-0 gap-y-3 gap-x-2 items-center sm:p-0 p-4 w-full">
@@ -161,12 +170,12 @@ const Features = () => {
                   </button>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Features
+export default Features;

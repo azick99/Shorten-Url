@@ -1,6 +1,13 @@
 import { brandRecognition, detailedRecords, fullyCustomizble } from '../assets'
 
-export const techs = [
+type Techs = {
+  icon: string;
+  title: string;
+  description: string;
+  transform?: string | undefined
+}
+
+export const techs: Techs[] = [
   {
     icon: brandRecognition,
     title: 'Brand Recognition',

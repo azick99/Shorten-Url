@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { ReactComponent as Facebook } from '../assets/icon-facebook.svg'
 import { ReactComponent as Instagram } from '../assets/icon-instagram.svg'
 import { ReactComponent as Twitter } from '../assets/icon-twitter.svg'
